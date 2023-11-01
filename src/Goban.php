@@ -26,8 +26,8 @@ class Goban
     /**
      * Get the status of a given position
      * 
-     * @param integer $x $x The x-coordinate of the stone.
-     * @param integer $y The y-coordinate of the stone.
+     * @param int $x The x-coordinate of the stone.
+     * @param int $y The y-coordinate of the stone.
      * 
      * @return Status The status at the given position
      */
