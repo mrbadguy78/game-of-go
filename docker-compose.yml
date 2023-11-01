@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: game-of-go
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    tty: true
+    
