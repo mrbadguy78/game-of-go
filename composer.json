@@ -1,0 +1,26 @@
+{
+    "name": "mrbadguy78/game-of-go",
+    "description": "Game of Go",
+    "type": "project",
+    "require": {
+        "php": ">=7.3|>=8.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.24"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrBadGuy\\GameOfGo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Giuseppe Gibilisco"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
