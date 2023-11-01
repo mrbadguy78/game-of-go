@@ -47,6 +47,10 @@ cd game-of-go
 docker-compose up -d
 ```
 
+- Run composer install
+```sh
+docker exec -it game-of-go composer install
+```
 - Run the tests
 ```sh
 docker exec -it game-of-go ./vendor/bin/pest
