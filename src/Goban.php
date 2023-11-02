@@ -7,13 +7,6 @@ use MrBadGuy\GameOfGo\Status;
 class Goban
 {
     /**
-     * Positions already visited
-     *
-     * @var array
-     */
-    private array $visited;
-
-    /**
      * Class constructor
      *
      * @param array $goban 
@@ -61,13 +54,15 @@ class Goban
      */
     public function isTaken(int $x, int $y): bool
     {
+        $visited = [];
+
         $status = $this->getStatus($x, $y);
 
         if ($status !== Status::BLACK && $status !== Status::WHITE) {
             return false;
         }
 
-        return !$this->hasFreedom($x, $y, $status);
+        return !$this->hasFreedom($x, $y, $status, $visited);
     }
 
     /**
@@ -79,15 +74,15 @@ class Goban
      * 
      * @return bool True if the stone has freedom, false otherwise.
      */
-    private function hasFreedom(int $x, int $y, Status $targetStatus): bool
+    private function hasFreedom(int $x, int $y, Status $targetStatus, array &$visited): bool
     {
         $key = $x . "," . $y;
 
-        if (isset($this->visited[$key])) {
+        if (isset($visited[$key])) {
             return false;
         }
 
-        $this->visited[$key] = true;
+        $visited[$key] = true;
 
         $status = $this->getStatus($x, $y);
 
@@ -100,9 +95,9 @@ class Goban
         }
 
         // Check all adjacent positions
-        return $this->hasFreedom($x - 1, $y, $targetStatus) ||
-            $this->hasFreedom($x + 1, $y, $targetStatus) ||
-            $this->hasFreedom($x, $y - 1, $targetStatus) ||
-            $this->hasFreedom($x, $y + 1, $targetStatus);
+        return $this->hasFreedom($x - 1, $y, $targetStatus, $visited) ||
+            $this->hasFreedom($x + 1, $y, $targetStatus, $visited) ||
+            $this->hasFreedom($x, $y - 1, $targetStatus, $visited) ||
+            $this->hasFreedom($x, $y + 1, $targetStatus, $visited);
     }
 }
